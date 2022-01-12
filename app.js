@@ -1,5 +1,13 @@
+//QUERY SELECTORS
 let numberButtons = document.querySelectorAll('[data-number]')
+let operationButtons = document.querySelectorAll('[data-operation]')
+let allClearButton = document.querySelector('[data-ac]')
+let deleteButton = document.querySelector('[data-del]')
+let equalsButton = document.querySelector('[data-equals]')
+let previousOperandTextEl = document.querySelector('[data-previous-operand]')
+let currentOperandTextEl = document.querySelector('[data-current-operand]')
 
+//OPERATORS
 let add = (a, b) => {
     return a + b
     console.log()
