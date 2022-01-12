@@ -7,6 +7,16 @@ let equalsButton = document.querySelector('[data-equals]')
 let previousOperandTextEl = document.querySelector('[data-previous-operand]')
 let currentOperandTextEl = document.querySelector('[data-current-operand]')
 
+appendNumber = (number) => {
+
+}
+
+numberButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        console.log(button)
+    })
+})
+
 //OPERATORS
 let add = (a, b) => {
     return a + b
@@ -31,3 +41,4 @@ let operate = (operator, a, b) => {
     if (operator === multiply) {return multiply(a,b)}
     if (operator === divide) {return divide(a,b)}
 }
+
