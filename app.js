@@ -7,6 +7,9 @@ let equalsButton = document.querySelector('[data-equals]')
 let previousOperandTextEl = document.querySelector('[data-previous-operand]')
 let currentOperandTextEl = document.querySelector('[data-current-operand]')
 
+appendNumber = (number) => {
+    currentOperandTextEl.innerText = currentOperandTextEl.innerText += number
+}
 
 numberButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -14,11 +17,11 @@ numberButtons.forEach((button) => {
     })
 })
 
-appendNumber = (number) => {
-    currentOperandTextEl.innerText = currentOperandTextEl.innerText += number
-}
-
-
+operationButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        
+    })
+})
 
 
 //OPERATORS
