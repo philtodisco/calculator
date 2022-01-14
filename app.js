@@ -11,12 +11,15 @@ let currentOperator = ''
 let firstOperand = ''
 let secondOperand = ''
 
+
 appendNumber = (number) => {
     currentOperandTextEl.innerText = currentOperandTextEl.innerText += number
-    let firstOperand = currentOperandTextEl.innerText
 }
+
 chooseOperator = (operator) => {
-    currentOperator = operator
+    previousOperandTextEl.innerText = currentOperandTextEl.innerText += operator
+    currentOperandTextEl.innerText = ''
+    // currentOperator = operator
 }
 
 numberButtons.forEach((button) => {
