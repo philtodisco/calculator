@@ -30,6 +30,8 @@ allClear = () => {
 
 equals = () => {
     secondOperand = currentOperandTextEl.innerText
+    operate(currentOperator, firstOperand, secondOperand)
+
 }
 
 numberButtons.forEach((button) => {
@@ -62,8 +64,8 @@ deleteButton.addEventListener('click', () => {
 
 //OPERATORS
 let add = (a, b) => {
+    console.log(a+b)
     return a + b
-    console.log()
 } 
 
 let subtract = (a, b) => {
@@ -79,6 +81,8 @@ let divide = (a, b) => {
 } 
 
 let operate = (operator, a, b) => {
+    a = Number(a)
+    b = Number(b)
     if (operator === '+') {return add(a,b)}
     if (operator === '-') {return subtract(a,b)}
     if (operator === '*') {return multiply(a,b)}
