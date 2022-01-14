@@ -23,7 +23,8 @@ chooseOperator = (operator) => {
 }
 
 allClear = () => {
-    console.log('hey')
+    previousOperandTextEl.innerText = ''
+    currentOperandTextEl.innerText = ''
 }
 
 
