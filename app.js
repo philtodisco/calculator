@@ -23,15 +23,21 @@ chooseOperator = (operator) => {
     currentOperandTextEl.innerText = ''
 }
 
-allClear = () => {
+resetDisplays = () => {
     previousOperandTextEl.innerText = ''
     currentOperandTextEl.innerText = ''
+}
+
+allClear = () => {
+    currentOperator = ''
+    firstOperand = ''
+    secondOperand = ''
 }
 
 equals = (results) => {
     secondOperand = currentOperandTextEl.innerText
     operate(currentOperator, firstOperand, secondOperand)
-    allClear()
+    resetDisplays()
     currentOperandTextEl.innerText = firstOperand
 }
 
@@ -49,6 +55,7 @@ operationButtons.forEach((button) => {
 
 allClearButton.addEventListener('click', () => {
     allClear()
+    resetDisplays()
 })
 
 equalsButton.addEventListener('click', () => {
