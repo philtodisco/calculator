@@ -7,9 +7,9 @@ let equalsButton = document.querySelector('[data-equals]')
 let previousOperandTextEl = document.querySelector('[data-previous-operand]')
 let currentOperandTextEl = document.querySelector('[data-current-operand]')
 
-// let currentOperator = ''
-// let firstOperand = ''
-// let secondOperand = ''
+let currentOperator = ''
+let firstOperand = ''
+let secondOperand = ''
 
 
 appendNumber = (number) => {
@@ -17,9 +17,9 @@ appendNumber = (number) => {
 }
 
 chooseOperator = (operator) => {
-    previousOperandTextEl.innerText = currentOperandTextEl.innerText += operator
-    currentOperandTextEl.innerText = ''
-    // currentOperator = operator
+    firstOperand = currentOperandTextEl.innerText
+    currentOperator = operator
+    previousOperandTextEl.innerText = `${firstOperand} ${currentOperator}`
 }
 
 allClear = () => {
@@ -27,6 +27,9 @@ allClear = () => {
     currentOperandTextEl.innerText = ''
 }
 
+equals = () => {
+
+}
 
 numberButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -44,29 +47,33 @@ allClearButton.addEventListener('click', () => {
     allClear()
 })
 
+equalsButton.addEventListener('click', () => {
+    equals()
+})
 
-// //OPERATORS
-// let add = (a, b) => {
-//     return a + b
-//     console.log()
-// } 
 
-// let subtract = (a, b) => {
-//     return a - b 
-// } 
+//OPERATORS
+let add = (a, b) => {
+    return a + b
+    console.log()
+} 
 
-// let multiply = (a, b) => {
-//     return a * b
-// } 
+let subtract = (a, b) => {
+    return a - b 
+} 
 
-// let divide = (a, b) => {
-//     return a / b
-// } 
+let multiply = (a, b) => {
+    return a * b
+} 
 
-// let operate = (operator, a, b) => {
-//     if (operator === add) {return add(a,b)}
-//     if (operator === subtract) {return subtract(a,b)}
-//     if (operator === multiply) {return multiply(a,b)}
-//     if (operator === divide) {return divide(a,b)}
-// }
+let divide = (a, b) => {
+    return a / b
+} 
+
+let operate = (operator, a, b) => {
+    if (operator === add) {return add(a,b)}
+    if (operator === subtract) {return subtract(a,b)}
+    if (operator === multiply) {return multiply(a,b)}
+    if (operator === divide) {return divide(a,b)}
+}
 
