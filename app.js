@@ -4,6 +4,7 @@ let operationButtons = document.querySelectorAll('[data-operation]')
 let allClearButton = document.querySelector('[data-ac]')
 let deleteButton = document.querySelector('[data-del]')
 let equalsButton = document.querySelector('[data-equals]')
+let decimalButton = document.querySelector('[data-decimal]')
 let previousOperandTextEl = document.querySelector('[data-previous-operand]')
 let currentOperandTextEl = document.querySelector('[data-current-operand]')
 
@@ -14,6 +15,14 @@ let secondOperand = ''
 
 appendNumber = (number) => {
     currentOperandTextEl.innerText = currentOperandTextEl.innerText += number
+}
+
+appendDecimal = () => {
+    if (currentOperandTextEl.innerText.includes('.')) {
+        return
+    } else {
+        currentOperandTextEl.innerText = currentOperandTextEl.innerText += '.'
+    }
 }
 
 chooseOperator = (operator) => {
@@ -46,6 +55,8 @@ numberButtons.forEach((button) => {
         appendNumber(button.innerText)
     })
 })
+
+decimalButton.addEventListener('click', () => appendDecimal())
 
 operationButtons.forEach((button) => {
     button.addEventListener('click', () => {
