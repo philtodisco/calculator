@@ -14,11 +14,16 @@ let secondOperand = ''
 
 
 appendNumber = (number) => {
+    if (currentOperandTextEl.innerText === '' && number === '0') {
+        return
+    }
     currentOperandTextEl.innerText = currentOperandTextEl.innerText += number
 }
 
 appendDecimal = () => {
-    if (currentOperandTextEl.innerText.includes('.')) {
+    if (currentOperandTextEl.innerText === '') {
+        currentOperandTextEl.innerText = '0.'
+    } else if (currentOperandTextEl.innerText.includes('.')) {
         return
     } else {
         currentOperandTextEl.innerText = currentOperandTextEl.innerText += '.'
@@ -41,6 +46,8 @@ allClear = () => {
     currentOperator = ''
     firstOperand = ''
     secondOperand = ''
+    previousOperandTextEl.innerText = ''
+    currentOperandTextEl.innerText = ''
 }
 
 equals = (results) => {
@@ -66,7 +73,6 @@ operationButtons.forEach((button) => {
 
 allClearButton.addEventListener('click', () => {
     allClear()
-    resetDisplays()
 })
 
 equalsButton.addEventListener('click', () => {
