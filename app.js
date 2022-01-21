@@ -50,12 +50,17 @@ allClear = () => {
     currentOperandTextEl.innerText = ''
 }
 
+deleteNumber = () => {
+    currentOperandTextEl.innerText = currentOperandTextEl.innerText.slice(0, -1)
+}
+
 equals = (results) => {
     secondOperand = currentOperandTextEl.innerText
     operate(currentOperator, firstOperand, secondOperand)
     resetDisplays()
     currentOperandTextEl.innerText = firstOperand
 }
+
 
 numberButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -84,6 +89,7 @@ deleteButton.addEventListener('click', () => {
     console.log(`${currentOperator} this is currentOperator`)
     console.log(`${firstOperand} this is firstOperand`)
     console.log(`${secondOperand} this is secondOperand`)
+    deleteNumber()
 })
 //console.log button for testing data!!!
 
