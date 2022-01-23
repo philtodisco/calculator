@@ -14,14 +14,18 @@ let secondOperand = ''
 
 
 appendNumber = (number) => {
-    if (currentOperandTextEl.innerText === '' && number === '0') {
-        return
-    }
+    if (currentOperandTextEl.innerText.length > 10) return
+    if (currentOperandTextEl.innerText === '' && number === '0') return
     currentOperandTextEl.innerText = currentOperandTextEl.innerText += number
+
+    //comma logic ???
+    currentOperandTextEl.innerText = parseFloat(currentOperandTextEl.innerText.replace(/,/g, ''));
+    currentOperandTextEl.innerText = Number(currentOperandTextEl.innerText).toLocaleString()
+ 
 }
 
 appendDecimal = () => {
-    if (currentOperandTextEl.innerText === '') {
+    if (currentOperandTextEl.innerText === '') { 
         currentOperandTextEl.innerText = '0.'
     } else if (currentOperandTextEl.innerText.includes('.')) {
         return
