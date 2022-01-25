@@ -28,6 +28,12 @@ decimalButton.addEventListener('click', () => appendDecimal())
 allClearButton.addEventListener('click', () => allClear())
 deleteButton.addEventListener('click', () => deleteNumber())
 
+window.addEventListener('keydown', (e) => handleKeyboardInput(e))
+
+handleKeyboardInput = (e) => {
+    console.log(e)
+  }
+
 appendNumber = (number) => {
     if (currentOperandTextEl.innerText.length > 10) return
     if (currentOperandTextEl.innerText === '' && number === '0') return
@@ -86,23 +92,23 @@ resetDisplays = () => {
 deleteNumber = () => currentOperandTextEl.innerText = currentOperandTextEl.innerText.slice(0, -1)
 
 //OPERATORS
-let add = (a, b) => {
+add = (a, b) => {
     currentOperandTextEl.innerText = a + b
 } 
 
-let subtract = (a, b) => {
+subtract = (a, b) => {
     currentOperandTextEl.innerText = a - b 
 } 
 
-let multiply = (a, b) => {
+multiply = (a, b) => {
     currentOperandTextEl.innerText = a * b
 } 
 
-let divide = (a, b) => {
+divide = (a, b) => {
     currentOperandTextEl.innerText = a / b
 } 
 
-let operate = (operator, a, b) => {
+operate = (operator, a, b) => {
     a = Number(a)
     b = Number(b)
     if (operator === '+') {return add(a,b)}
