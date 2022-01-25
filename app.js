@@ -1,4 +1,7 @@
-//QUERY SELECTORS
+let currentOperator = ''
+let firstOperand = ''
+let secondOperand = ''
+
 let numberButtons = document.querySelectorAll('[data-number]')
 let operationButtons = document.querySelectorAll('[data-operation]')
 let allClearButton = document.querySelector('[data-ac]')
@@ -8,10 +11,22 @@ let decimalButton = document.querySelector('[data-decimal]')
 let previousOperandTextEl = document.querySelector('[data-previous-operand]')
 let currentOperandTextEl = document.querySelector('[data-current-operand]')
 
-let currentOperator = ''
-let firstOperand = ''
-let secondOperand = ''
+numberButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        appendNumber(button.innerText)
+    })
+})
 
+operationButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        chooseOperator(button.innerText)
+    })
+})
+
+equalsButton.addEventListener('click', () => equals())
+decimalButton.addEventListener('click', () => appendDecimal())
+allClearButton.addEventListener('click', () => allClear())
+deleteButton.addEventListener('click', () => deleteNumber())
 
 appendNumber = (number) => {
     if (currentOperandTextEl.innerText.length > 10) return
@@ -25,6 +40,27 @@ appendNumber = (number) => {
  
 }
 
+chooseOperator = (operator) => {
+    if (currentOperandTextEl.innerText == '') return
+    firstOperand = currentOperandTextEl.innerText
+    currentOperator = operator
+    previousOperandTextEl.innerText = `${firstOperand} ${currentOperator}`
+    currentOperandTextEl.innerText = ''
+}
+
+equals = () => {
+    // repeat operation
+    if (previousOperandTextEl.innerText == '') {
+        firstOperand = currentOperandTextEl.innerText
+        operate(currentOperator, firstOperand, secondOperand)
+        // normal operation
+    } else {
+        secondOperand = currentOperandTextEl.innerText
+        resetDisplays()
+        operate(currentOperator, firstOperand, secondOperand)
+    }
+}
+
 appendDecimal = () => {
     if (currentOperandTextEl.innerText === '') {  
         currentOperandTextEl.innerText = '0.'
@@ -35,18 +71,6 @@ appendDecimal = () => {
     }
 }
 
-chooseOperator = (operator) => {
-    firstOperand = currentOperandTextEl.innerText
-    currentOperator = operator
-    previousOperandTextEl.innerText = `${firstOperand} ${currentOperator}`
-    currentOperandTextEl.innerText = ''
-}
-
-resetDisplays = () => {
-    previousOperandTextEl.innerText = ''
-    currentOperandTextEl.innerText = ''
-}
-
 allClear = () => {
     currentOperator = ''
     firstOperand = ''
@@ -54,51 +78,12 @@ allClear = () => {
     resetDisplays()
 }
 
-deleteNumber = () => currentOperandTextEl.innerText = currentOperandTextEl.innerText.slice(0, -1)
-
-equals = () => {
-    // repeat operation
-    if (previousOperandTextEl.innerText == '') {
-        firstOperand = currentOperandTextEl.innerText
-        operate(currentOperator, firstOperand, secondOperand)
-    // normal operation
-    } else {
-        secondOperand = currentOperandTextEl.innerText
-        resetDisplays()
-        operate(currentOperator, firstOperand, secondOperand)
-    }
-    
+resetDisplays = () => {
+    previousOperandTextEl.innerText = ''
+    currentOperandTextEl.innerText = ''
 }
 
-
-numberButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-        appendNumber(button.innerText)
-    })
-})
-
-decimalButton.addEventListener('click', () => appendDecimal())
-
-operationButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-        chooseOperator(button.innerText)
-    })
-})
-
-allClearButton.addEventListener('click', () => {
-    allClear()
-})
-
-equalsButton.addEventListener('click', () => equals())
-
-//console.log button for testing data!!!
-deleteButton.addEventListener('click', () => {
-    console.log(`${currentOperator} this is currentOperator`)
-    console.log(`${firstOperand} this is firstOperand`)
-    console.log(`${secondOperand} this is secondOperand`)
-    // deleteNumber()
-})
-//console.log button for testing data!!!
+deleteNumber = () => currentOperandTextEl.innerText = currentOperandTextEl.innerText.slice(0, -1)
 
 //OPERATORS
 let add = (a, b) => {
@@ -126,4 +111,9 @@ let operate = (operator, a, b) => {
     if (operator === '÷') {return divide(a,b)}
 
 }
+
+//console.log for testing data!!!
+// console.log(`${currentOperator} this is currentOperator`)
+// console.log(`${firstOperand} this is firstOperand`)
+// console.log(`${secondOperand} this is secondOperand`)
 
