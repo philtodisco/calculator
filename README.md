@@ -4,8 +4,8 @@ This application allows you to calculate basic operations in the browser. The ap
 
 **Here are the links to my deployed application and my reposository:**
 
-* [Repo] (https://github.com/philtodisco/calculator)
-* [Deployed App] (https://philtodisco.github.io/calculator/)
+* [Repo](https://github.com/philtodisco/calculator)
+* [Deployed App](https://philtodisco.github.io/calculator/)
 
 **User Stories:**
 
