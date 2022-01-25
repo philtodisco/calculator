@@ -27,23 +27,18 @@ equalsButton.addEventListener('click', () => equals())
 decimalButton.addEventListener('click', () => appendDecimal())
 allClearButton.addEventListener('click', () => allClear())
 deleteButton.addEventListener('click', () => deleteNumber())
-
 window.addEventListener('keydown', (e) => handleKeyboardInput(e))
-
-handleKeyboardInput = (e) => {
-    console.log(e)
-  }
 
 appendNumber = (number) => {
     if (currentOperandTextEl.innerText.length > 10) return
     if (currentOperandTextEl.innerText === '' && number === '0') return
     currentOperandTextEl.innerText = currentOperandTextEl.innerText += number
     
-
+    
     //comma logic ???
     // currentOperandTextEl.innerText = parseFloat(currentOperandTextEl.innerText.replace(/,/g, ''));
     // currentOperandTextEl.innerText = Number(currentOperandTextEl.innerText).toLocaleString()
- 
+    
 }
 
 chooseOperator = (operator) => {
@@ -107,6 +102,16 @@ multiply = (a, b) => {
 divide = (a, b) => {
     currentOperandTextEl.innerText = a / b
 } 
+handleKeyboardInput = (e) => {
+    console.log(e.key)
+    if (e.key <= 9 && e.key >= 0) appendNumber(e.key)
+    if (e.key === '.') appendDecimal()
+    if (e.key === 'Enter' || e.key === '=') equals()
+    if (e.key === 'Backspace') deleteNumber()
+    if (e.key === 'Escape') allClear()
+    if (e.key === '+' || e.key === '-' || e.key === '*') chooseOperator(e.key)
+    if (e.key === '/') chooseOperator('÷')
+  }
 
 operate = (operator, a, b) => {
     a = Number(a)
@@ -115,7 +120,7 @@ operate = (operator, a, b) => {
     if (operator === '-') {return subtract(a,b)}
     if (operator === '*') {return multiply(a,b)}
     if (operator === '÷') {return divide(a,b)}
-
+    
 }
 
 //console.log for testing data!!!
